@@ -258,4 +258,13 @@ public class TermuxAppSharedPreferences extends AppSharedPreferences {
         SharedPreferenceUtils.setBoolean(mSharedPreferences, TERMUX_APP.KEY_CRASH_REPORT_NOTIFICATIONS_ENABLED, value, false);
     }
 
+
+    public String getLanguage() {
+        return SharedPreferenceUtils.getString(mSharedPreferences, TERMUX_APP.KEY_LANGUAGE, TERMUX_APP.DEFAULT_VALUE_LANGUAGE, true);
+    }
+
+    public void setLanguage(String value) {
+        SharedPreferenceUtils.setString(mSharedPreferences, TERMUX_APP.KEY_LANGUAGE, value, false);
+    }
+
 }

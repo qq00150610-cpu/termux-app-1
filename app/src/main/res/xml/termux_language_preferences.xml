@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:key="language"
+        app:title="@string/termux_language_preferences_title"
+        app:summary="@string/language_system_default"
+        app:fragment="com.termux.app.fragments.settings.LanguagePreferencesFragment"/>
+
+</PreferenceScreen>

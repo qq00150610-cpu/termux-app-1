@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.termux.BuildConfig;
+import com.termux.shared.android.LanguageUtils;
 import com.termux.shared.errors.Error;
 import com.termux.shared.logger.Logger;
 import com.termux.shared.termux.TermuxBootstrap;
@@ -20,6 +21,11 @@ import com.termux.shared.termux.theme.TermuxThemeUtils;
 public class TermuxApplication extends Application {
 
     private static final String LOG_TAG = "TermuxApplication";
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LanguageUtils.applyLanguage(base));
+    }
 
     public void onCreate() {
         super.onCreate();

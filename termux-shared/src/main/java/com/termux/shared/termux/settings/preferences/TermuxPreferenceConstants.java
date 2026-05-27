@@ -88,6 +88,12 @@ public final class TermuxPreferenceConstants {
     public static final class TERMUX_APP {
 
         /**
+         * Defines the key for app language setting.
+         */
+        public static final String KEY_LANGUAGE = "app_language";
+        public static final String DEFAULT_VALUE_LANGUAGE = "system";
+
+        /**
          * Defines the key for whether terminal view margin adjustment that is done to prevent soft
          * keyboard from covering bottom part of terminal view on some devices is enabled or not.
          * Margin adjustment may cause screen flickering on some devices and so should be disabled.
