@@ -229,6 +229,13 @@
 
 
 
+    <!-- Language Preferences -->
+    <string name="termux_language_preferences_title">Language / Language</string>
+    <string name="termux_language_preferences_summary">Select application interface display language</string>
+    <string name="language_system_default">Follow System</string>
+    <string name="language_chinese">Chinese</string>
+    <string name="language_english">English</string>
+
     <!-- About Preference -->
     <string name="about_preference_title">About</string>
 
