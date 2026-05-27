@@ -1,8 +1,9 @@
 package com.termux.app.fragments.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Process;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,11 +12,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.termux.R;
-import com.termux.app.TermuxActivity;
-import com.termux.shared.android.AndroidUtils;
 import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-
-import java.util.Locale;
 
 public class LanguagePreferencesFragment extends PreferenceFragmentCompat {
 
@@ -61,7 +58,7 @@ public class LanguagePreferencesFragment extends PreferenceFragmentCompat {
                     currentLanguage = selectedLanguage;
                     saveLanguagePreference(selectedLanguage);
                     updateLanguageSummary(languagePref, selectedLanguage);
-                    AndroidUtils.restartApp(requireContext());
+                    restartApp(requireContext());
                 }
                 dialog.dismiss();
             })
@@ -69,10 +66,23 @@ public class LanguagePreferencesFragment extends PreferenceFragmentCompat {
             .show();
     }
 
+    private void restartApp(Context context) {
+        if (context == null) return;
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        if (intent != null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+            Process.killProcess(Process.myPid());
+        }
+    }
+
     private void saveLanguagePreference(String language) {
         Context context = getContext();
         if (context == null) return;
-        AppSharedPreferences.get(context).setLanguage(language);
+        TermuxAppSharedPreferences prefs = TermuxAppSharedPreferences.build(context);
+        if (prefs != null) {
+            prefs.setLanguage(language);
+        }
     }
 
     private String getCurrentLanguage() {
