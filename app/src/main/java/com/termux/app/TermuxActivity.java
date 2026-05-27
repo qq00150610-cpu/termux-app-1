@@ -189,6 +189,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     private static final int CONTEXT_MENU_HELP_ID = 7;
     private static final int CONTEXT_MENU_SETTINGS_ID = 8;
     private static final int CONTEXT_MENU_REPORT_ID = 9;
+    private static final int CONTEXT_MENU_LANGUAGE_ID = 12;
 
     private static final String ARG_TERMINAL_TOOLBAR_TEXT_INPUT = "terminal_toolbar_text_input";
     private static final String ARG_ACTIVITY_RECREATED = "activity_recreated";
@@ -651,6 +652,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         menu.add(Menu.NONE, CONTEXT_MENU_KILL_PROCESS_ID, Menu.NONE, getResources().getString(R.string.action_kill_process, getCurrentSession().getPid())).setEnabled(currentSession.isRunning());
         menu.add(Menu.NONE, CONTEXT_MENU_STYLING_ID, Menu.NONE, R.string.action_style_terminal);
         menu.add(Menu.NONE, CONTEXT_MENU_TOGGLE_KEEP_SCREEN_ON, Menu.NONE, R.string.action_toggle_keep_screen_on).setCheckable(true).setChecked(mPreferences.shouldKeepScreenOn());
+        menu.add(Menu.NONE, CONTEXT_MENU_LANGUAGE_ID, Menu.NONE, R.string.termux_language_preferences_title);
         menu.add(Menu.NONE, CONTEXT_MENU_HELP_ID, Menu.NONE, R.string.action_open_help);
         menu.add(Menu.NONE, CONTEXT_MENU_SETTINGS_ID, Menu.NONE, R.string.action_open_settings);
         menu.add(Menu.NONE, CONTEXT_MENU_REPORT_ID, Menu.NONE, R.string.action_report_issue);
@@ -694,6 +696,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                 return true;
             case CONTEXT_MENU_TOGGLE_KEEP_SCREEN_ON:
                 toggleKeepScreenOn();
+                return true;
+            case CONTEXT_MENU_LANGUAGE_ID:
+                showLanguageDialog();
                 return true;
             case CONTEXT_MENU_HELP_ID:
                 ActivityUtils.startActivity(this, new Intent(this, HelpActivity.class));
@@ -762,6 +767,41 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
             mTerminalView.setKeepScreenOn(true);
             mPreferences.setKeepScreenOn(true);
         }
+    }
+
+    private void showLanguageDialog() {
+        String currentLang = mPreferences.getLanguage();
+        String[] langValues = {"system", "zh", "en"};
+        String[] langNames = {getString(R.string.language_system_default), getString(R.string.language_chinese), getString(R.string.language_english)};
+        
+        int selectedIndex = 0;
+        for (int i = 0; i < langValues.length; i++) {
+            if (langValues[i].equals(currentLang)) {
+                selectedIndex = i;
+                break;
+            }
+        }
+        
+        new AlertDialog.Builder(this)
+            .setTitle(R.string.termux_language_preferences_title)
+            .setSingleChoiceItems(langNames, selectedIndex, (dialog, which) -> {
+                String selectedLang = langValues[which];
+                if (!selectedLang.equals(currentLang)) {
+                    mPreferences.setLanguage(selectedLang);
+                    dialog.dismiss();
+                    // Restart app to apply language change
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+                    if (intent != null) {
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                } else {
+                    dialog.dismiss();
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .show();
     }
 
 
