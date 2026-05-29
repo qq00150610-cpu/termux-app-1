@@ -109,4 +109,7 @@
     <string name="log_level_unknown">*未知*</string>
     <string name="log_level_value">Logcat 日志级别设置为"%1$s"</string>
 
+    <!-- Text Input -->
+    <string name="title_text_input">文本输入</string>
+
 </resources>

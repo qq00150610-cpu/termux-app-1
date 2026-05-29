@@ -259,7 +259,4 @@
     <string name="error_cannot_create_default_extra_keys">Can\'t create default extra keys</string>
     <string name="error_failed_to_load_extra_keys">Could not load and set the \"%1$s\" property from the properties file: %2$s</string>
 
-    <!-- Text Input -->
-    <string name="title_text_input">Text Input</string>
-
 </resources>

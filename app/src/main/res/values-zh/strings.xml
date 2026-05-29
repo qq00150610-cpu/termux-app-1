@@ -222,7 +222,4 @@
     <string name="error_cannot_create_default_extra_keys">无法创建默认额外按键</string>
     <string name="error_failed_to_load_extra_keys">无法从属性文件加载并设置 "%1$s" 属性：%2$s</string>
 
-    <!-- Text Input -->
-    <string name="title_text_input">文本输入</string>
-
 </resources>

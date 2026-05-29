@@ -135,4 +135,7 @@
     <string name="log_level_unknown">*Unknown*</string>
     <string name="log_level_value">Logcat log level set to \"%1$s\"</string>
 
+    <!-- Text Input -->
+    <string name="title_text_input">Text Input</string>
+
 </resources>
