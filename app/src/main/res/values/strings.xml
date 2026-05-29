@@ -242,4 +242,24 @@
     <!-- Donate Preference -->
     <string name="donate_preference_title">Donate</string>
 
+    <!-- File Receiver Activity -->
+    <string name="error_send_action_no_content">Send action without content - nothing to save.</string>
+    <string name="error_data_uri_not_passed">Data uri not passed.</string>
+    <string name="error_file_path_invalid">File path from data uri is null, empty or invalid.</string>
+    <string name="error_cannot_open_file">Cannot open file: %1$s.</string>
+    <string name="error_unable_to_receive_file">Unable to receive any file or URL.</string>
+    <string name="error_unable_to_handle_shared_content">Unable to handle shared content:\n\n%1$s</string>
+    <string name="error_file_editor_not_found">The following file does not exist:\n$HOME/bin/termux-file-editor\n\nInstall termux-api package to get it.</string>
+    <string name="error_file_name_empty">File name cannot be null or empty</string>
+    <string name="error_cannot_create_directory">Cannot create directory: %1$s</string>
+    <string name="error_saving_file">Error saving file:\n\n%1$s</string>
+    <string name="error_url_opener_not_found">The following file does not exist:\n$HOME/bin/termux-url-opener\n\nInstall termux-api package to get it.</string>
+
+    <!-- Extra Keys -->
+    <string name="error_cannot_create_default_extra_keys">Can\'t create default extra keys</string>
+    <string name="error_failed_to_load_extra_keys">Could not load and set the \"%1$s\" property from the properties file: %2$s</string>
+
+    <!-- Text Input -->
+    <string name="title_text_input">Text Input</string>
+
 </resources>

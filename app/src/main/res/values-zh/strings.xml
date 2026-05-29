@@ -205,4 +205,24 @@
     <!-- Donate Preference -->
     <string name="donate_preference_title">捐赠</string>
 
+    <!-- File Receiver Activity -->
+    <string name="error_send_action_no_content">发送操作没有内容 - 没有可保存的内容。</string>
+    <string name="error_data_uri_not_passed">未传递数据 URI。</string>
+    <string name="error_file_path_invalid">数据 URI 中的文件路径为空或无效。</string>
+    <string name="error_cannot_open_file">无法打开文件：%1$s。</string>
+    <string name="error_unable_to_receive_file">无法接收任何文件或网址。</string>
+    <string name="error_unable_to_handle_shared_content">无法处理分享的内容：\n\n%1$s</string>
+    <string name="error_file_editor_not_found">以下文件不存在：\n$HOME/bin/termux-file-editor\n\n请安装 termux-api 包来获取它。</string>
+    <string name="error_file_name_empty">文件名不能为空</string>
+    <string name="error_cannot_create_directory">无法创建目录：%1$s</string>
+    <string name="error_saving_file">保存文件出错：\n\n%1$s</string>
+    <string name="error_url_opener_not_found">以下文件不存在：\n$HOME/bin/termux-url-opener\n\n请安装 termux-api 包来获取它。</string>
+
+    <!-- Extra Keys -->
+    <string name="error_cannot_create_default_extra_keys">无法创建默认额外按键</string>
+    <string name="error_failed_to_load_extra_keys">无法从属性文件加载并设置 "%1$s" 属性：%2$s</string>
+
+    <!-- Text Input -->
+    <string name="title_text_input">文本输入</string>
+
 </resources>
